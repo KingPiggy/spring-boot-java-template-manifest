@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: digimon-pg-fe-deployment
+  namespace: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: digimon-pg-fe-app
+  template:
+    metadata:
+      labels:
+        app: digimon-pg-fe-app
+    spec:
+      containers:
+        - name: digimon-pg-fe-container
+          image: kingpiggy/digimon-pg-dev-fe:0.1.0
+          ports:
+            - containerPort: 80
